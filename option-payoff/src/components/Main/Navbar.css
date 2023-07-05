@@ -1,0 +1,120 @@
+.navbar {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid green; */
+    /* padding-left: 10px; */
+
+
+
+}
+
+.left__navbar {
+    display: flex;
+    flex-direction: row;
+    padding-left: 30px;
+    height: 100%;
+    align-items: center;
+    color: white;
+
+}
+
+.logobar {
+    height: 100%;
+    min-width: 200px;
+    /* background-color: green; */
+    display: flex;
+    align-items: center;
+ 
+}
+.logobar:hover{
+    cursor: pointer;
+}
+
+.logo {
+
+    height: 40px;
+    color: #76FF84;
+
+}
+
+.logobar>span {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    margin-left: 10px;
+    /* background-color: red; */
+    font-size: 1.5rem;
+}
+
+
+.search__bar{
+    margin-left: 20px;
+    height: 35%;
+  
+    align-items: center;
+    display: flex;
+    min-width: 300px;
+    max-width: 500px;
+    border-radius: 20px;
+    padding: 10px;
+    padding-left: 20px;
+    background-color: #1B2025;
+    border: 1px solid rgb(36, 36, 37);
+
+
+
+}
+.search__bar input{
+    width: 100%;
+    height: 100%;
+    background-color: #1B2025;
+    border: none;
+    font-size: 1.2rem;
+    caret-color: rgb(114, 106, 106);
+    color: rgb(114, 106, 106);
+
+
+}
+input:focus{
+    outline: none;
+}
+
+.search__icon{
+    height: 20px;
+    color: rgb(114, 106, 106);
+}
+
+
+.right__navbar{
+  padding-right: 20px;
+}
+.login__button{
+    height: 40px;
+    background-color: #76FF84;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 140px;
+    max-width: 150px;
+    justify-content: center;
+    border-radius: 10px;
+    color: #1A1E23;
+    font-weight: 600;
+
+}
+.login__icon{
+    height: 18px;
+}
+
+.login__button span{
+    font-size: 1.3rem;
+    margin-right: 10px;
+}
+.login__button:hover{
+    cursor: pointer;
+}

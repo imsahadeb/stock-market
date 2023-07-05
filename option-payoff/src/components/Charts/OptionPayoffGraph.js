@@ -2,10 +2,9 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 import './OptionPayoffGraph.css';
 
-import { Chart as ChartJs, LineElement, CategoryScale, LinearScale, PointElement } from 'chart.js';
-import { toBeRequired } from '@testing-library/jest-dom/dist/matchers';
+import { Chart as ChartJs, LineElement, CategoryScale, LinearScale, PointElement,Tooltip } from 'chart.js';
 
-ChartJs.register(LineElement, CategoryScale, LinearScale, PointElement);
+ChartJs.register(LineElement, CategoryScale, LinearScale, PointElement,Tooltip );
 
 function OptionPayoffGraph() {
   const spotPrice = 44700;
@@ -26,17 +25,11 @@ function OptionPayoffGraph() {
   }
 
   // Calculate combined payoff
-  const cePayoff = 0;
-  const pePayoff = 0;
-  const buyPayoff = 0;
 
   for (let i = 0; i < underlyingPrices.length; i++) {
     const underlyingPrice = underlyingPrices[i];
     console.log(underlyingPrice);
 
-
-    // const callPayoff = underlyingPrice <= callSold ? callPremium - (callSold - underlyingPrice) : -callPremium;
-    //const putPayoff = underlyingPrice >= putSold ? putPremium - (underlyingPrice - putSold) : -putPremium;
 
     const cePayoff = underlyingPrice <= callSold ? callPremium : (callSold - underlyingPrice + callPremium);
     const pePayoff = underlyingPrice >= putSold ? putPremium : (underlyingPrice - putSold + putPremium);
@@ -65,28 +58,24 @@ function OptionPayoffGraph() {
       {
         label: 'Combined Payoff',
         data: combinedPayoff,
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: (context) => {
-          const index = context.dataIndex;
-          const payoff = combinedPayoff[index];
-          return index === 0 ? 'rgba(255, 0, 0, 0.5)' : (payoff >= 0 ? 'rgba(0, 255, 0, 0.5)' : 'rgba(255, 0, 0, 0)');
-        },
+        borderColor: 'blue',
         fill: true,
+        backgroundColor:'blue'
+       
       },
     ],
   };
   
-  
-
   const options = {
     responsive: true,
     plugins: {
-      legend: {
-        position: 'top',
-      },
       title: {
         display: true,
         text: 'Option Payoff Graph',
+      },
+      tooltip: {
+        mode: 'index',
+        intersect: false,
       },
     },
     scales: {
@@ -95,15 +84,22 @@ function OptionPayoffGraph() {
           display: true,
           text: 'Underlying Price',
         },
+        grid: {
+          display: false,
+        },
       },
       y: {
         title: {
           display: true,
           text: 'Payoff',
         },
+        grid: {
+          display: false,
+        },
       },
     },
   };
+  
   const maxProfit = combinedPayoff.length > 0 ? Math.max(...combinedPayoff) : 0;
   return (
     <div className="center">

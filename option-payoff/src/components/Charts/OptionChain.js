@@ -34,8 +34,9 @@ const OptionChain = () => {
                 <div className="chain__container">
                     {Object.entries(optionChain).map(([strike, options]) => (
                         <div className='chain__row' key={strike}>
-                            <div className="chain__item">{strike}</div>
+                            
                             <div className="chain__item">{options[0]?.lastPrice}</div>
+                            <div className="chain__item">{strike}</div>
                             <div className="chain__item">{options[1]?.lastPrice}</div>
                         </div>
                     ))}
