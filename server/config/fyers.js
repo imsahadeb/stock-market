@@ -1,0 +1,10 @@
+import fyers from 'fyers-api-v2';
+const fyersData={
+    'appId': 'UGY069G3IZ-100',
+    'appSecret': '7DNKQGSG6K',
+    'accessToken': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuZnllcnMuaW4iLCJpYXQiOjE2ODg3MDQzMzcsImV4cCI6MTY4ODc3NjIxNywibmJmIjoxNjg4NzA0MzM3LCJhdWQiOlsieDowIiwieDoxIiwieDoyIiwiZDoxIiwiZDoyIiwieDoxIiwieDowIl0sInN1YiI6ImFjY2Vzc190b2tlbiIsImF0X2hhc2giOiJnQUFBQUFCa3A1VlJPTWRqeVFpZng2VFVlMmNRTkRwc1lnUjRRNmE0eFNpMWNicEhrVWhuc29TYnhVYnNfaG5zcjFScDE4cV9VUmNNZGZ3d1Bjb1Vmc0VDYk1fbm8tdUV4dV9UemoxVThuMzhVMHdmTW5GUDhDND0iLCJkaXNwbGF5X25hbWUiOiJTQUhBREVCIEJBUk1BTiIsIm9tcyI6IksxIiwiZnlfaWQiOiJEUzAyMjgzIiwiYXBwVHlwZSI6MTAwLCJwb2FfZmxhZyI6Ik4ifQ.CuAC6UFmn7nYl8mRHUyq3js5lljFwU9BIQD96remjrg'
+}
+
+fyers.setAppId(fyersData.appId);
+fyers.setAccessToken(fyersData.accessToken);
+export default fyers;
