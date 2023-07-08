@@ -1,5 +1,5 @@
 import express from 'express';
-import { getDateByOffset, getCharts, generateFutureSymbol, getFuturePrice, getStrike, getOptionChain } from '../Utilis/utils.js';
+import { getDateByOffset, getCharts, generateFutureSymbol, getFuturePrice, getStrike, getOptionChain, getNSEOptionChain, getExpiryDates } from '../Utilis/utils.js';
 import fyers from '../config/fyers.js';
 const router = express.Router();
 
@@ -133,14 +133,40 @@ router.get('/option-chain/:symbol/:expiry', async (req, res) => {
 
     const data = await getOptionChain(symbol, expiry, 100);
     console.log("****************************************************");
-    console.log("call:",data);
+    console.log("call:", data);
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
+router.get('/nse-optionschain/:symbol/:expiry', async (req, res) => {
+  //symbol.toUpperCase();
+  try {
+    const symbol = req.params.symbol;
+    const expiry = req.params.expiry;
 
+    const data = await getNSEOptionChain(symbol.toUpperCase(), expiry);
+    console.log("****************************************************");
+    console.log("call:", data);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+})
+
+
+router.get('/getexpiry/:symbol', async (req, res) => {
+  try {
+    const symbol = req.params.symbol;
+    const data = await getExpiryDates(symbol.toUpperCase());
+    console.log("****************************************************");
+    console.log("call expiry dates:", data);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+})
 
 
 export default router;

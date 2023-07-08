@@ -42,6 +42,10 @@ const Sidebar = () => {
         <FontAwesomeIcon icon={faChartSimple} />
         <span>Options Chain</span>
       </Link>
+      <Link to="/oi" className={isActive('/oi')}>
+        <FontAwesomeIcon icon={faChartSimple} />
+        <span>Open Interest</span>
+      </Link>
      
     </div>
   );

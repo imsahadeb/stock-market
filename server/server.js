@@ -1,6 +1,6 @@
 import express from 'express';
 import router from './routes/router.js';
-import { generateFutureSymbol, getFuturePrice, getOptionChain } from './Utilis/utils.js';
+import { generateFutureSymbol, getFuturePrice, getNSEOptionChain, getOptionChain } from './Utilis/utils.js';
 
 const app = express();
 app.use('/api', router);
@@ -13,7 +13,7 @@ let socketClients = [];
   });
     
   // getOptionChain('banknifty','2023-07-06',100);
-
+getNSEOptionChain('BANKNIFTY','13-Jul-2023');
 
 app.listen(port, (err)=>{
 if(err){

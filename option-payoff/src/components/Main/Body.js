@@ -2,13 +2,14 @@ import React from 'react'
 import './Body.css'
 import Sidebar from './Sidebar'
 import { Route, Routes } from "react-router-dom";
-import Positions from './BodyComponents/Positions'
-import Home from './BodyComponents/Home'
-import News from './BodyComponents/News'
-import Blog from './BodyComponents/Blog'
-import Portfolio from './BodyComponents/Portfolio'
-import StrategyBuilder from './BodyComponents/StrategyBuilder'
-import OptionChain from './BodyComponents/OptionChain'
+import Positions from './Body/Positions'
+import Home from './Body/Home'
+import News from './Body/News'
+import Blog from './Body/Blog'
+import Portfolio from './Body/Portfolio'
+import StrategyBuilder from './Body/StrategyBuilder'
+import OptionChain from './Body/OptionChain'
+import OpenInterest from './Body/OpenInterest';
 
 export const Body = () => {
 
@@ -24,6 +25,7 @@ export const Body = () => {
                     <Route path='/positions' element={<Positions />} />
                     <Route path='/builder' element={<StrategyBuilder/>}/>
                     <Route path='/optionchain' element={<OptionChain/>}/>
+                    <Route path='/oi' element={<OpenInterest/>}/>
                     
                 </Routes>
               
