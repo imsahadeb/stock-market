@@ -9,7 +9,7 @@ import Blog from './Body/Blog'
 import Portfolio from './Body/Portfolio'
 import StrategyBuilder from './Body/StrategyBuilder'
 import OptionChain from './Body/OptionChain'
-import OpenInterest from './Body/OpenInterest';
+import OpenInterest from './Utility/OpenInterest';
 
 export const Body = () => {
 

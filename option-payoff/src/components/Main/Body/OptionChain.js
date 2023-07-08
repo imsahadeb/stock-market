@@ -1,7 +1,7 @@
 import React from 'react'
 
 import './OptionChain.css'
-import OpenInterest from './OpenInterest'
+
 const OptionChain = () => {
   return (
     <div className="universal__body">
