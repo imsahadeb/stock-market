@@ -9,7 +9,8 @@ import Blog from './Body/Blog'
 import Portfolio from './Body/Portfolio'
 import StrategyBuilder from './Body/StrategyBuilder'
 import OptionChain from './Body/OptionChain'
-import OpenInterest from './Utility/OpenInterest';
+
+import Oi from './Body/Oi';
 
 export const Body = () => {
 
@@ -25,7 +26,7 @@ export const Body = () => {
                     <Route path='/positions' element={<Positions />} />
                     <Route path='/builder' element={<StrategyBuilder/>}/>
                     <Route path='/optionchain' element={<OptionChain/>}/>
-                    <Route path='/oi' element={<OpenInterest/>}/>
+                    <Route path='/oi' element={<Oi/>}/>
                     
                 </Routes>
               

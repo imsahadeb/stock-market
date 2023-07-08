@@ -5,7 +5,7 @@ import './OptionChain.css'
 const OptionChain = () => {
   return (
     <div className="universal__body">
-      {/* <OpenInterest symbol={'banknifty'} expiry={'2023-07-13'} width='100%' height='600'/> */}
+    
       <div className="top__nav">
         <div className="top__nav__left">
           <button className="top__navbutton">Summary</button>
