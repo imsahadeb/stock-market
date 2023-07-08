@@ -12,9 +12,6 @@ let socketClients = [];
     res.send('Server is running');
   });
     
-  // getOptionChain('banknifty','2023-07-06',100);
-getNSEOptionChain('BANKNIFTY','13-Jul-2023');
-
 app.listen(port, (err)=>{
 if(err){
     console.log(`Error in running server at port  ${port}: ${err.message}`);
