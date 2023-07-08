@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Home.css';
-import StockBox from '../UtilityComponent/StockBox';
+import StockBox from '../Utility/StockBox';
 import CandleChart from './CandleChart';
 
 const Home = () => {

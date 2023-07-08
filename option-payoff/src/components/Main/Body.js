@@ -29,13 +29,7 @@ export const Body = () => {
                     
                 </Routes>
               
-                {/* <Home />
-                <News />
-                <Blog />
-                <Portfolio />
-                <Positions />
-                <StrategyBuilder />
-                <OptionChain /> */}
+          
             </div>
         </div>
     )
