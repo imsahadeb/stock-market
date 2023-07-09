@@ -3,7 +3,6 @@ import hmac
 import os
 import struct
 import time
-import json
 from urllib.parse import parse_qs, urlparse
 
 import requests
@@ -94,20 +93,25 @@ def get_profile(token):
 def check():
     try:
         token = read_file()
+        print("U have token allready!")
+        print(token);
     except FileNotFoundError:
         token = get_token()
-
-    response = get_profile(token)
-
-    if "error" in response["s"] or "error" in response["message"] or "expired" in response["message"]:
-        print("Getting a new fyers access token!")
-        token = get_token()
-        write_file(token)
-        print(get_profile(token))
-    else:
         print("Got the fyers access token!")
         write_file(token)
-        print(response)
+        print(token)
+
+    # response = get_profile(token)
+
+    # if "error" in response["s"] or "error" in response["message"] or "expired" in response["message"]:
+    #     print("Getting a new fyers access token!")
+    #     token = get_token()
+    #     write_file(token)
+    #     print(get_profile(token))
+    # else:
+    #     print("Got the fyers access token!")
+    #     write_file(token)
+    #     print(response)
 
 
 if __name__ == "__main__":
