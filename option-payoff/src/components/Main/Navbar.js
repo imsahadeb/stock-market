@@ -28,12 +28,13 @@
 // }
 
 // export default Navbar
-
+import axios from '../../api/axios.js'
+import requests from '../../api/requests.js';
 import React, { useState } from 'react';
 import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartSimple, faSearch, faSun, faUser, faWallet } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios'
+
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
@@ -44,7 +45,7 @@ const Navbar = () => {
     setSearchQuery(query);
 
     try {
-      const response = await axios.get(`/api/stocks/search?q=${query}`);
+      const response = await axios.get(requests.findStocks(query));
 
       console.log(response.data);
       setSearchResults(response.data);
@@ -79,8 +80,12 @@ const Navbar = () => {
             </ul>
           </div>
         )}
+      
       </div>
       <div className="right__navbar">
+      <div className="current__positions">
+          Positions: <span>2002</span>
+        </div>
         <div className="login__button">
           <span onClick={togglePopup}>Login</span>
           <FontAwesomeIcon icon={faUser} className="login__icon" />

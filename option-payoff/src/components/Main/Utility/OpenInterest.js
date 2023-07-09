@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import axios from 'axios';
+import axios from '../../../api/axios.js'
+import requests from '../../../api/requests.js';
 import './OpenInterest.css'
 const OpenInterest = ({symbol,expiry, height='100%', width='100%'}) => {
     const [data, setData] = useState({});
@@ -8,7 +9,7 @@ const OpenInterest = ({symbol,expiry, height='100%', width='100%'}) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`/api/option-chain/${symbol}/${expiry}`);
+                const response = await axios.get(requests.getOptionChain(symbol,expiry));
                 setData(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
