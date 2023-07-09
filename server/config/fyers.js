@@ -1,8 +1,9 @@
 import fyers from 'fyers-api-v2';
+import data from '../fyers_access_token.js'
 const fyersData={
     'appId': 'UGY069G3IZ-100',
     'appSecret': '7DNKQGSG6K',
-    'accessToken': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuZnllcnMuaW4iLCJpYXQiOjE2ODg3ODY1ODQsImV4cCI6MTY4ODg2MjYwNCwibmJmIjoxNjg4Nzg2NTg0LCJhdWQiOlsieDowIiwieDoxIiwieDoyIiwiZDoxIiwiZDoyIiwieDoxIiwieDowIl0sInN1YiI6ImFjY2Vzc190b2tlbiIsImF0X2hhc2giOiJnQUFBQUFCa3FOYVlJN2M4aG8wTEI2bENRME8wYmhBc3J6bXhvcUdyNGtMcTZQR0YxMEtLNE1kbExQZW9pdUxFMG1pczcyNVZOM2RXaTZkd1Q4YTBOWE1rNER3QzR4V0Y5WlB5LWNCZHFXZmNhOFlSTV9sZWJkVT0iLCJkaXNwbGF5X25hbWUiOiJTQUhBREVCIEJBUk1BTiIsIm9tcyI6IksxIiwiZnlfaWQiOiJEUzAyMjgzIiwiYXBwVHlwZSI6MTAwLCJwb2FfZmxhZyI6Ik4ifQ.y4Npqrjjd3i7S5bFhuoaR1Cvq1IqA9dw8Z2KQtXLzus'
+    'accessToken':data.token
 }
 
 fyers.setAppId(fyersData.appId);

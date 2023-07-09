@@ -3,6 +3,7 @@ import hmac
 import os
 import struct
 import time
+import json
 from urllib.parse import parse_qs, urlparse
 
 import requests
@@ -25,15 +26,26 @@ def totp(key, time_step=30, digits=6, digest="sha1"):
     return str(binary)[-digits:].zfill(digits)
 
 
-def read_file():
-    with open("fyers_access_token.txt", "r") as f:
-        token = f.read()
-    return token
-
-
+#         json.dump(data, json_file)  # Serialize the data as JSON
 def write_file(token):
-    with open("fyers_access_token.txt", "w") as f:
-        f.write(token)
+    file_path = "fyers_access_token.js"  # Specify the JavaScript file path
+
+    # Format the data as a JavaScript object string
+    data = f'export const data = {{ "token": "{token}" }};'
+
+    with open(file_path, "w") as js_file:
+        js_file.write(data)  # Write the data to the JavaScript file
+
+def read_file():
+    file_path = "fyers_access_token.js"  # Specify the JavaScript file path
+
+    with open(file_path, "r") as js_file:
+        data = js_file.read()  # Read the JavaScript file contents
+
+    # Extract the token value from the JavaScript file
+    token = data.split('"token": "')[1].split('"')[0]
+
+    return token
 
 
 def get_token():
@@ -50,7 +62,6 @@ def get_token():
     r1 = s.post("https://api-t2.fyers.in/vagator/v2/send_login_otp_v2", data=data1)
     assert r1.status_code == 200, f"Error in r1:\n {r1.json()}"
 
-
     request_key = r1.json()["request_key"]
     data2 = f'{{"request_key":"{request_key}","otp":{totp(totp_key)}}}'
     r2 = s.post("https://api-t2.fyers.in/vagator/v2/verify_otp", data=data2)
@@ -66,7 +77,7 @@ def get_token():
     r4 = s.post("https://api.fyers.in/api/v2/token", headers=headers, data=data4)
     assert r4.status_code == 308, f"Error in r4:\n {r4.json()}"
 
-    parsed = urlparse(r4.json()["Url"]) console.log(response.da console.log(response.data.Url);ta.Url);
+    parsed = urlparse(r4.json()["Url"])
     auth_code = parse_qs(parsed.query)["auth_code"][0]
 
     session = accessToken.SessionModel(client_id=client_id, secret_key=secret_key, redirect_uri=redirect_uri, response_type="code", grant_type="authorization_code")
@@ -100,5 +111,4 @@ def check():
 
 
 if __name__ == "__main__":
-    x=totp(totp_key)
-    print(x)
+    check()
