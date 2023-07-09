@@ -2,7 +2,7 @@
   "name": "option-payoff",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8000",
+  "proxy": "http://api.ghontu.in",
   "dependencies": {
     "-": "^0.0.1",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
