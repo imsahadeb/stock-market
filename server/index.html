@@ -31,28 +31,6 @@
 <body>
   <h1>API Documentation</h1>
 
-  <h2>MongoDB Router</h2>
-  <table>
-    <tr>
-      <th>Endpoint</th>
-      <th>Method</th>
-      <th>Full URL</th>
-      <th>Description</th>
-    </tr>
-    <tr>
-      <td>/stocks</td>
-      <td>GET</td>
-      <td>http://api.ghonta.in/api/stocks</td>
-      <td>Retrieves all stocks</td>
-    </tr>
-    <tr>
-      <td>/stocks/search?q=your_query</td>
-      <td>GET</td>
-      <td>http://api.ghonta.in/api/stocks/search?q=your_query</td>
-      <td>Searches for stocks based on a query</td>
-    </tr>
-  </table>
-
   <h2>Router</h2>
   <table>
     <tr>
@@ -64,74 +42,50 @@
     <tr>
       <td>/profile</td>
       <td>GET</td>
-      <td>http://api.ghonta.in/api/profile</td>
+      <td>http://api.ghontu.in/api/profiles</td>
       <td>Retrieves the user's profile</td>
     </tr>
     <tr>
       <td>/funds</td>
       <td>GET</td>
-      <td>http://api.ghonta.in/api/funds</td>
+      <td>http://api.ghontu.in/api/funds</td>
       <td>Retrieves the user's funds</td>
     </tr>
     <tr>
       <td>/positions</td>
       <td>GET</td>
-      <td>http://api.ghonta.in/api/positions</td>
+      <td>http://api.ghontu.in/api/positions</td>
       <td>Retrieves the user's positions</td>
     </tr>
     <tr>
-      <td>/quotes/:id</td>
+      <td>/quotes</td>
       <td>GET</td>
-      <td>http://api.ghonta.in/api/quotes/:id</td>
+      <td>http://api.ghontu.in/api/quotes?symbol=sbin</td>
       <td>Retrieves quotes for a specific symbol</td>
     </tr>
     <tr>
-      <td>/future/:id</td>
+      <td>/future</td>
       <td>GET</td>
-      <td>http://api.ghonta.in/api/future/:id</td>
+      <td>http://api.ghontu.in/api/future?symbol=banknifty</td>
       <td>Retrieves information about a future contract</td>
     </tr>
     <tr>
-      <td>/charts/:id</td>
+      <td>/charts</td>
       <td>GET</td>
-      <td>http://api.ghonta.in/api/charts/:id</td>
+      <td>http://api.ghontu.in/api/charts?symbol=sbin&day=2</td>
       <td>Retrieves charts for a specific symbol</td>
     </tr>
     <tr>
-      <td>/quotes/</td>
+      <td>/option-chain/</td>
       <td>GET</td>
-      <td>http://api.ghonta.in/api/quotes/</td>
-      <td>Retrieves quotes for multiple symbols</td>
-    </tr>
-    <tr>
-      <td>/option-chain/:symbol/:expiry</td>
-      <td>GET</td>
-      <td>http://api.ghonta.in/api/option-chain/:symbol/:expiry</td>
+      <td>http://api.ghontu.in/api/option-chain?symbol=nifty&expiry=13-Jul-2023</td>
       <td>Retrieves option chain data for a specific symbol and expiry</td>
-    </tr>
-    <tr>
-      <td>/nse-options-chain/:symbol/:expiry</td>
-      <td>GET</td>
-      <td>http://api.ghonta.in/api/nse-options-chain/:symbol/:expiry</td>
-      <td>Retrieves NSE option chain data for a specific symbol and expiry</td>
-    </tr>
-    <tr>
-      <td>/nse-options-chain</td>
-      <td>GET</td>
-      <td>http://api.ghonta.in/api/nse-options-chain</td>
-      <td>Retrieves NSE option chain data for a specific symbol and expiry (query parameters)</td>
-    </tr>
-    <tr>
-      <td>/getexpiry/symbol=:symbol</td>
-      <td>GET</td>
-      <td>http://api.ghonta.in/api/getexpiry/symbol=:symbol</td>
-      <td>Retrieves expiry dates for a specific symbol (path parameter)</td>
     </tr>
     <tr>
       <td>/getexpiry</td>
       <td>GET</td>
-      <td>http://api.ghonta.in/api/getexpiry</td>
-      <td>Retrieves expiry dates for a specific symbol (query parameter)</td>
+      <td>http://api.ghontu.in/api/getexpiry?symbol=nifty</td>
+      <td>Retrieves expiry dates for a specific symbol</td>
     </tr>
   </table>
 </body>
