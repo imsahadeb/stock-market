@@ -9,19 +9,11 @@ connectToDatabase();
 
 console.log('Mongo db Router loaded');
 
-mongodbRouter.get('/stocks', async (req, res) => {
-    try {
-        const stocks = await StockModel.find();
-        res.json(stocks);
-    } catch (error) {
-        res.status(500).json({ error: 'Error fetching stocks' });
-    }
-});
 
-mongodbRouter.get('/stocks/search', async (req, res) => {
+mongodbRouter.get('/stocks', async (req, res) => {
     console.log('calling /stocks.search');
     try {
-        const query = req.query.q; // Get the search query from request query parameters
+        const query = req.query.search; // Get the search query from request query parameters
         const stocks = await StockModel.find({
             $or: [
                 { SYMBOL: { $regex: query, $options: 'i' } }, // Case-insensitive search on SYMBOL field

@@ -8,6 +8,10 @@ console.log('Router loaded');
 
 
 
+
+/**
+ * Example Url http://localhost:8000/api/profiles
+ */
 router.get('/profile', async (req, res) => {
   try {
     const data = await fyers.get_profile(); // Call fetchData and wait for the response
@@ -20,6 +24,10 @@ router.get('/profile', async (req, res) => {
 
 
 
+
+/**
+ * Example Url http://localhost:8000/api/funds
+ */
 router.get('/funds', async (req, res) => {
   console.log('calling');
   try {
@@ -34,7 +42,9 @@ router.get('/funds', async (req, res) => {
 
 
 
-
+/**
+ * Example Url http://localhost:8000/api/positions
+ */
 router.get('/positions', async (req, res) => {
   console.log('calling');
   try {
@@ -48,11 +58,11 @@ router.get('/positions', async (req, res) => {
 
 
 
-
-router.get('/quotes/:id', async (req, res) => {
+// Exanple Url http://localhost:8000/api/quotes?symbol=sbin
+router.get('/quotes', async (req, res) => {
   console.log('calling');
   try {
-    const q = req.params.id.toUpperCase();
+    const q = (req.query.symbol).toUpperCase();
     const symbol = `NSE:${q}-EQ`;
     console.log(symbol);
     const quotes = new fyers.quotes();
@@ -66,12 +76,11 @@ router.get('/quotes/:id', async (req, res) => {
 });
 
 
-
-
-router.get('/future/:id', async (req, res) => {
+// Example Url http://localhost:8000/api/future?symbol=banknifty
+router.get('/future', async (req, res) => {
   console.log('calling');
   try {
-    const q = req.params.id.toUpperCase();
+    const q = req.query.symbol.toUpperCase();
     const symbol = generateFutureSymbol(q);
     console.log(symbol);
     const quotes = new fyers.quotes();
@@ -86,12 +95,13 @@ router.get('/future/:id', async (req, res) => {
 
 
 
-
-router.get('/charts/:id', async (req, res) => {
+// Example Url http://localhost:8000/api/charts?symbol=sbin&day=2
+router.get('/charts', async (req, res) => {
   console.log('calling');
   try {
-    const offset = 0;
-    const data = await getCharts(offset, req.params.id);
+    const offset = req.query.day;
+    const symbol =  req.query.symbol;
+    const data = await getCharts(offset,symbol);
     console.log(data);
     res.json(data);
   } catch (error) {
@@ -102,71 +112,29 @@ router.get('/charts/:id', async (req, res) => {
 
 
 
-
-router.get('/quotes/', async (req, res) => {
-  console.log('calling');
-  try {
-    const quotes = new fyers.quotes();
-    const data = await quotes.setSymbol('NSE:BANKNIFTY2370645000CE,NSE:NIFTY2370619000PE').getQuotes();
-
-    const strikes = data.d.map(item => {
-      const symbol = item.n; // "NSE:BANKNIFTY2370645000CE" or "NSE:BANKNIFTY2370645000PE"
-      const strike = symbol.split(':')[1].slice(0, -2); // "45000CE" or "45000PE"
-      return strike;
-    });
-
-    console.log(strikes);
-    console.log(data);
-
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ error: error.message }); // Return error as JSON response
-  }
-});
-
-
-
-router.get('/option-chain/:symbol/:expiry', async (req, res) => {
-  try {
-    const symbol = req.params.symbol;
-    const expiry = req.params.expiry;
-
-    const data = await getOptionChain(symbol, expiry, 100);
-    console.log("****************************************************");
-    console.log("call:", data);
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
 
 /**
- * 
+ * Example Url http://localhost:8000/api/option-chain?symbol=nifty&expiry=13-Jul-2023 for normal
+ *  http://localhost:8000/api/option-chain?symbol=nifty&expiry=13-Jul-2023&source=nse for option chain from nse
  */
 
-router.get('/nse-options-chain/:symbol/:expiry', async (req, res) => {
-  //symbol.toUpperCase();
-  try {
-    const symbol = req.params.symbol;
-    const expiry = req.params.expiry;
-
-    const data = await getNSEOptionChain(symbol.toUpperCase(), expiry);
-    console.log("****************************************************");
-    console.log("call:", data);
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-})
-
-
-router.get('/nse-options-chain', async (req, res) => {
+router.get('/option-chain/', async (req, res) => {
   //symbol.toUpperCase();
   try {
     const symbol = req.query.symbol;
     const expiry = req.query.expiry;
+    const source = req.query.source;
+    let data='';
+   if(source=='nse'){
+     data = await getNSEOptionChain(symbol.toUpperCase(), expiry);
+   }
+   else{
+     data = await getOptionChain(symbol, expiry, 100);
+   }
+    
+    
 
-    const data = await getNSEOptionChain(symbol.toUpperCase(), expiry);
+ 
     console.log("****************************************************");
     console.log("call:", data);
     res.json(data);
@@ -176,18 +144,11 @@ router.get('/nse-options-chain', async (req, res) => {
 })
 
 
-router.get('/getexpiry/symbol=:symbol', async (req, res) => {
-  try {
-    const symbol = req.params.symbol;
-    const data = await getExpiryDates(symbol.toUpperCase());
-    console.log("****************************************************");
-    console.log("call expiry dates:", data);
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-})
 
+
+/**
+ * Example Url http://localhost:8000/api/getexpiry?symbol=nifty
+ */
 router.get('/getexpiry', async (req, res) => {
   try {
     const symbol = req.query.symbol;
@@ -199,6 +160,7 @@ router.get('/getexpiry', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 })
+
 
 
 export default router;

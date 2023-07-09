@@ -4,18 +4,22 @@ import mongodbRouter from './routes/stocks.js';
 import { generateFutureSymbol, getFuturePrice, getNSEOptionChain, getOptionChain } from './Utilis/utils.js';
 import cors from 'cors';
 
-
 const app = express();
-app.use(cors());
+app.use(cors({ origin: '*' }));
 app.use('/api', router);
 app.use('/api', mongodbRouter);
+import { fileURLToPath } from 'url';
+import path from 'path';
 const port = 8000;
 
-
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const htmlPath = path.join(__dirname, 'index.html');
 
 app.get('/', (req, res) => {
-  res.send('Server is running');
+  res.sendFile(htmlPath);
 });
+
 
 
 app.listen(port, (err) => {

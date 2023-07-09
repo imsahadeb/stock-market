@@ -21,12 +21,12 @@ const Home = () => {
                 <StockBox stockName="wipro" onClick={() => handleStockBoxClick('wipro')} />
                 <StockBox stockName="infy" onClick={() => handleStockBoxClick('infy')} />
             </div>
-            <div className="stock__charts">
+            {/* <div className="stock__charts">
                 <div className="stock__chart">
                     <CandleChart symbol={selectedSymbol} width={'100%'} height={'100%'} />
                 </div>
                 <div className="info__box"></div>
-            </div>
+            </div> */}
             <div className="stock__charts">
                 <div className="stock__chart"></div>
                 <div className="info__box"></div>

@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
 import './StockBox.css';
-import axios from 'axios';
-
+import axios from '../../../api/axios.js'
+import requests from '../../../api/requests.js';
 const StockBox = ({ stockName, onClick }) => {
   const [stockDetails, setStockDetails] = useState(null);
 
@@ -12,7 +12,7 @@ const StockBox = ({ stockName, onClick }) => {
     if (stockName) {
       const fetchStockDetails = async () => {
         try {
-          const response = await axios.get(`/api/quotes/${stockName}`);
+          const response = await axios.get(requests.getQuotes(stockName));
           const data = response.data;
           if (data && data.code === 200 && data.d && data.d.length > 0) {
             const stockData = data.d[0];
