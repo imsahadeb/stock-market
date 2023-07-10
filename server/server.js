@@ -2,11 +2,13 @@ import express from 'express';
 import router from './routes/router.js';
 import mongodbRouter from './routes/stocks.js';
 import { dhanApiRouter } from './routes/dhanRoutes.js';
+import { newsRouter } from './routes/newsRoutes.js';
 import { generateFutureSymbol, getFuturePrice, getNSEOptionChain, getOptionChain } from './Utilis/utils.js';
 import cors from 'cors';
 
 const app = express();
 app.use(cors({ origin: '*' }));
+app.use('/news',newsRouter);
 app.use('/', router);
 app.use('/', mongodbRouter);
 app.use('/dhan', dhanApiRouter);
