@@ -6,6 +6,7 @@
     /* 3 columns with equal width */
     grid-gap: 10px;
     /* Gap between columns and rows */
+    margin-bottom: 100px;
 
 }
 
