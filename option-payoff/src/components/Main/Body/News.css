@@ -33,3 +33,25 @@
     width: 100% ;
     
 }
+
+.description a {
+    text-decoration: none; /* Remove underline */
+    color: #e4e4e4; /* Default text color */
+  }
+  
+  .description a:visited {
+    color: #bdbbce; /* Text color for visited links */
+  }
+  
+  .description a:hover {
+   text-decoration: underline; /* Text color on hover */
+  }
+  
+  .description a:active {
+    color: #00f; /* Text color when link is active/clicked */
+  }
+  
+  .title{
+    position: relative;
+    top: 150px;
+  }

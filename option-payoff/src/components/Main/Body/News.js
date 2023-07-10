@@ -23,7 +23,7 @@ const News = () => {
     <div className="universal__body">
       <div className="news__box">
         {article.map((options) => {
-         // const limitedDescription = options.description.slice(0, 100) + (options.description.length > 100 ? '...' : '');
+          // const limitedDescription = options.description.slice(0, 100) + (options.description.length > 100 ? '...' : '');
           return (
             <div className="news__item">
               <div className="thubnail">
@@ -32,7 +32,10 @@ const News = () => {
                 </div>
               </div>
               <div className="description">
-                <span>{truncate(options.description,140)}</span>
+                <a href={options.url} target='blank'>
+                  <span>{truncate(options.description, 140)}</span>
+                </a>
+
               </div>
             </div>
           );
@@ -40,7 +43,7 @@ const News = () => {
       </div>
     </div>
   );
-  
+
 }
 
 export default News

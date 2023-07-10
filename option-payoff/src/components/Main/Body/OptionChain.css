@@ -5,7 +5,6 @@
     align-items: center;
     display: flex;
     margin-bottom: 10px;
-
 }
 
 .top__navbutton {
@@ -26,6 +25,7 @@
     height: 70%;
     flex: .5;
     flex-direction: row;
+    padding-left: 5px;
 }
 
 .top__nav__right {
