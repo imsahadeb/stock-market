@@ -1,62 +1,39 @@
-// import React from 'react'
-// import './Navbar.css'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faChartSimple, faSearch, faSun, faUser, faWallet } from '@fortawesome/free-solid-svg-icons'
-
-// const Navbar = () => {
-//     return (
-//         <div className="navbar">
-//             <div className="left__navbar">
-//                 <div className="logobar">
-//                     <FontAwesomeIcon icon={faChartSimple} className='logo' />
-//                     <span>Trading Ninjas</span>
-//                 </div>
-//                 <div className="search__bar">
-//                     <input type="text" placeholder='Search...' />
-//                     <FontAwesomeIcon icon={faSearch} className='search__icon' />
-//                 </div>
-
-//             </div>
-//             <div className="right__navbar">
-//                 <div className="login__button">
-//                     <span>Login</span>
-//                     <FontAwesomeIcon icon={faUser} className='login__icon' />
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default Navbar
 import axios from '../../api/axios.js'
 import requests from '../../api/requests.js';
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartSimple, faSearch, faSun, faUser, faWallet } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const [showPopup, setShowPopup] = useState(true);
+  const [dhanPositions, setDhanPositions] = useState([]);
+  const [totalPnl, setTotalPnl] = useState(0);
 
-  const handleSearch = async (event) => {
-    const query = event.target.value;
-    setSearchQuery(query);
+  const calculatePNL = (position) => {
+    const buyAvg = position.buyAvg;
+    const sellAvg = position.sellAvg;
+    const quantity = position.buyQty;
 
-    try {
-      const response = await axios.get(requests.findStocks(query));
+    const pnl = (sellAvg - buyAvg) * quantity;
+    return pnl;
+  };
 
-      console.log(response.data);
-      setSearchResults(response.data);
-    } catch (error) {
-      console.error('Error fetching search results:', error);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(requests.getPositinOfDhan);
+      const positions = response.data;
+      setDhanPositions(positions);
+
+      // Calculate total PNL
+      const pnlArray = positions.map((position) => calculatePNL(position));
+      const totalPnl = pnlArray.reduce((accumulator, pnl) => accumulator + pnl, 0);
+      setTotalPnl(totalPnl);
     }
-  };
 
-  const togglePopup = () => {
-    setShowPopup(!showPopup);
-  };
+    fetchData();
+  }, []);
+  const pnlColor = totalPnl < 0 ? 'red' : 'green';
 
   return (
     <div className="navbar">
@@ -66,28 +43,16 @@ const Navbar = () => {
           <span>Trading Ninjas</span>
         </div>
         <div className="search__bar">
-          <input type="text" placeholder="Search..." value={searchQuery} onChange={handleSearch} />
+          <input type="text" placeholder="Search..." />
           <FontAwesomeIcon icon={faSearch} className="search__icon" />
         </div>
-        {showPopup && (
-          <div className="popup__window">
-            <ul>
-              {searchResults.map((result) => (
-                <li key={result._id}>
-                  <span>{result.SYMBOL}</span> - <span>{result['NAME OF COMPANY']}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      
       </div>
       <div className="right__navbar">
-      <div className="current__positions">
-          Positions: <span>2002</span>
+        <div className="current__positions">
+        Today's Positions: <span style={{ color: pnlColor }}>{totalPnl}</span>
         </div>
         <div className="login__button">
-          <span onClick={togglePopup}>Login</span>
+          <span>Login</span>
           <FontAwesomeIcon icon={faUser} className="login__icon" />
         </div>
       </div>

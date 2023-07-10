@@ -137,4 +137,5 @@ input:focus{
 .current__positions>span{
     color: green;
     margin-left: 10px;
+    font-size: 1rem;
 }

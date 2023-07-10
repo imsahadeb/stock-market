@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import axios from 'axios';
+import axios from '../../../api/axios.js';
+import requests from '../../../api/requests.js';
 
-const CandleChart = ({symbol, height, width}) => {
+const CandleChart = ({symbol, day,height, width}) => {
   const [chartsData, setChartsData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/charts/${symbol}`);
+        const response = await axios.get(requests.getCharts(symbol,day));
         setChartsData(response.data.candles);
       } catch (error) {
         console.error('Error fetching data:', error);
