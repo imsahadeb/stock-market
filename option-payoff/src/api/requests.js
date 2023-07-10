@@ -25,6 +25,8 @@ const requests = {
 	getTradesfDhan: '/dhan/trades',
 	getFundsOfDhan: '/dhan/funds',
 
+	getTopBusniessNews:`/news/top-bn`,
+
 };
 
 export default requests;
