@@ -203,6 +203,8 @@ export const getNSEOptionChain = async (symbol, date) => {
 
   const data = await axios.get(url);
   const finalData = data.data.records.data;
+  console.log(finalData);
+
   const desiredExpiryDate = date;
   const filteredData = finalData.filter(option => option.expiryDate === desiredExpiryDate);
   console.log(filteredData);
