@@ -132,7 +132,9 @@ const ApexCharts = () => {
 
   return (
     <div id="chart">
-      <ReactApexChart options={options} series={series} type="area" height={600} width={900} />
+       {combinedPayoff.length > 0 && (
+        <ReactApexChart options={options} series={series} type="area" height={600} width={900} />
+      )}
     </div>
   );
 };
