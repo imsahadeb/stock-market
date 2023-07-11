@@ -21,7 +21,7 @@ const OpenInterest = ({symbol,expiry, height='100%', width='100%'}) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(requests.getOptionChain(symbol,expiry,'nse'));
+                const response = await axios.get(requests.getOptionChain(symbol,expiry));
                 console.log(response.data);
                 setData(response.data);
             } catch (error) {
