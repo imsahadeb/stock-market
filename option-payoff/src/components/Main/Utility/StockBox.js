@@ -14,6 +14,7 @@ const StockBox = ({ stockName, onClick }) => {
         try {
           const response = await axios.get(requests.getQuotes(stockName));
           const data = response.data;
+          console.log(data);
           if (data && data.code === 200 && data.d && data.d.length > 0) {
             const stockData = data.d[0];
             setStockDetails(stockData);
@@ -47,8 +48,8 @@ const StockBox = ({ stockName, onClick }) => {
 
   return (
     <div className="stock__item" onClick={() => onClick(stockName)}>
-      <div className="top">{short_name}</div>
-      <div className="bottom">
+      <div className="stockbox__top">{short_name}</div>
+      <div className="stockbox__bottom">
         <div className="left">
           <span>{lp}</span>
           <span className={isNegativeChange ? 'rate__change negative' : 'rate__change'}>

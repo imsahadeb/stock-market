@@ -114,13 +114,14 @@ router.get('/charts', async (req, res) => {
 
 
 /**
- * Example Url http://localhost:8000/api/option-chain?symbol=nifty&expiry=13-Jul-2023 for normal
- *  http://localhost:8000/api/option-chain?symbol=nifty&expiry=13-Jul-2023&source=nse for option chain from nse
+ * Example Url http://localhost:8000/option-chain?symbol=nifty&expiry=13-Jul-2023 for normal
+ *  http://localhost:8000/option-chain?symbol=nifty&expiry=13-Jul-2023&source=nse for option chain from nse
  */
 
 router.get('/option-chain/', async (req, res) => {
   //symbol.toUpperCase();
   try {
+    console.log('calling nse.... option chain');
     const symbol = req.query.symbol;
     const expiry = req.query.expiry;
     const source = req.query.source;
@@ -147,7 +148,7 @@ router.get('/option-chain/', async (req, res) => {
 
 
 /**
- * Example Url http://localhost:8000/api/getexpiry?symbol=nifty
+ * Example Url http://localhost:8000/getexpiry?symbol=nifty
  */
 router.get('/getexpiry', async (req, res) => {
   try {

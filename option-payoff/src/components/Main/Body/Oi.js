@@ -6,7 +6,7 @@ const Oi = () => {
 
         <div className="universal__body">
         
-            <OpenInterest symbol={'banknifty'} expiry={'2023-07-13'} width='100%' height='600' />
+            <OpenInterest symbol={'banknifty'} expiry={'13-Jul-2023'} width='100%' height='600' />
           
         </div>
     )

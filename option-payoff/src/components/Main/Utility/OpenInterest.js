@@ -6,10 +6,23 @@ import './OpenInterest.css'
 const OpenInterest = ({symbol,expiry, height='100%', width='100%'}) => {
     const [data, setData] = useState({});
 
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await axios.get(requests.getOptionChain(symbol,expiry));
+    //             setData(response.data);
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
+    //     };
+
+    //     fetchData();
+    // }, [symbol,expiry]);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(requests.getOptionChain(symbol,expiry));
+                const response = await axios.get(requests.getOptionChain(symbol,expiry,'nse'));
+                console.log(response.data);
                 setData(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);

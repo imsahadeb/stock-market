@@ -1,15 +1,18 @@
 
 
 .stock__row {
+ 
 
     display: flex;
     flex-direction: row;
     min-height: 130px;
+    max-height: 150px;
     /* align-items: center; */
     /* background-color: blue; */
-    overflow-x: hidden;
+    /* overflow: hidden; */
     justify-content: space-between;
     /* padding-right: 1px; */
+   
 
 
 }
