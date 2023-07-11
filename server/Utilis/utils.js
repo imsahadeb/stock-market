@@ -199,11 +199,13 @@ function formatVolume(volume) {
 export const getNSEOptionChain = async (symbol, date) => {
 
   const url = `https://www.nseindia.com/api/option-chain-indices?symbol=${symbol}`
+  console.log('url:', url);
 
   const data = await axios.get(url);
   const finalData = data.data.records.data;
   const desiredExpiryDate = date;
   const filteredData = finalData.filter(option => option.expiryDate === desiredExpiryDate);
+  console.log(filteredData);
   return filteredData;
 
 
