@@ -49,7 +49,8 @@ const Navbar = () => {
       </div>
       <div className="right__navbar">
         <div className="current__positions">
-        Today's Positions: <span style={{ color: pnlColor }}>{totalPnl}</span>
+        Today's Positions: <span style={{ color: pnlColor }}>{totalPnl.toFixed(2)}</span>
+
         </div>
         <div className="login__button">
           <span>Login</span>
