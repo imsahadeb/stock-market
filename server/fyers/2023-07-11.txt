@@ -1,2 +1,28 @@
 
 1689047197923 :: get_profile :: UGY069G3IZ-100:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuZnllcnMuaW4iLCJpYXQiOjE2ODg5NjYyMzAsImV4cCI6MTY4OTAzNTQxMCwibmJmIjoxNjg4OTY2MjMwLCJhdWQiOlsieDowIiwieDoxIiwieDoyIiwiZDoxIiwiZDoyIiwieDoxIiwieDowIl0sInN1YiI6ImFjY2Vzc190b2tlbiIsImF0X2hhc2giOiJnQUFBQUFCa3E1UldiSE82eVZYUW1jTjNuRFBtX2Vmank0ZlRmWHRlY3M3d0FzVDhrdTFKZldYdUlFb0t3QWFVVWpKMHBaMFBicjlkelEwQlpYV3l0b2lYTk0xc3Fyc2VuZDRCMFRtTUg0bWdMd2FKNzJWUGZKRT0iLCJkaXNwbGF5X25hbWUiOiJTQUhBREVCIEJBUk1BTiIsIm9tcyI6IksxIiwiZnlfaWQiOiJEUzAyMjgzIiwiYXBwVHlwZSI6MTAwLCJwb2FfZmxhZyI6Ik4ifQ.J07jHlH46JAU_GyFG_qGwTM47pPAq4kMQxzDuvwFjIM :: 1689047198485 :: {'s': 'error', 'code': -8, 'message': 'Your token has expired. Please generate a token'}
+
+1689047387811 :: get_profile :: UGY069G3IZ-100:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuZnllcnMuaW4iLCJpYXQiOjE2ODg5NjYyMzAsImV4cCI6MTY4OTAzNTQxMCwibmJmIjoxNjg4OTY2MjMwLCJhdWQiOlsieDowIiwieDoxIiwieDoyIiwiZDoxIiwiZDoyIiwieDoxIiwieDowIl0sInN1YiI6ImFjY2Vzc190b2tlbiIsImF0X2hhc2giOiJnQUFBQUFCa3E1UldiSE82eVZYUW1jTjNuRFBtX2Vmank0ZlRmWHRlY3M3d0FzVDhrdTFKZldYdUlFb0t3QWFVVWpKMHBaMFBicjlkelEwQlpYV3l0b2lYTk0xc3Fyc2VuZDRCMFRtTUg0bWdMd2FKNzJWUGZKRT0iLCJkaXNwbGF5X25hbWUiOiJTQUhBREVCIEJBUk1BTiIsIm9tcyI6IksxIiwiZnlfaWQiOiJEUzAyMjgzIiwiYXBwVHlwZSI6MTAwLCJwb2FfZmxhZyI6Ik4ifQ.J07jHlH46JAU_GyFG_qGwTM47pPAq4kMQxzDuvwFjIM :: 1689047388197 :: {'s': 'error', 'code': -8, 'message': 'Your token has expired. Please generate a token'}
+
+1689053017535 :: get_profile :: UGY069G3IZ-100:Hello :: 1689053017841 :: {'s': 'error', 'code': -17, 'message': 'Could not authenticate the user'}
+
+1689053019054 :: get_profile :: UGY069G3IZ-100:Hello :: 1689053019334 :: {'s': 'error', 'code': -17, 'message': 'Could not authenticate the user'}
+
+1689053038631 :: get_profile :: UGY069G3IZ-100:Hello :: 1689053039025 :: {'s': 'error', 'code': -17, 'message': 'Could not authenticate the user'}
+
+1689053040521 :: get_profile :: UGY069G3IZ-100:Hello :: 1689053040854 :: {'s': 'error', 'code': -17, 'message': 'Could not authenticate the user'}
+
+1689053127241 :: get_profile :: UGY069G3IZ-100:Hello :: 1689053127574 :: {'s': 'error', 'code': -17, 'message': 'Could not authenticate the user'}
+
+1689053129449 :: get_profile :: UGY069G3IZ-100:Hello :: 1689053129770 :: {'s': 'error', 'code': -17, 'message': 'Could not authenticate the user'}
+
+1689053808477 :: get_profile :: FA2XHPXX2T-100:Hello :: 1689053809036 :: {'s': 'error', 'code': -17, 'message': 'Could not authenticate the user'}
+
+1689053811598 :: get_profile :: FA2XHPXX2T-100:Hello :: 1689053812234 :: {'s': 'error', 'code': -17, 'message': 'Could not authenticate the user'}
+
+1689055904826 :: get_profile :: FA2XHPXX2T-100:Hello :: 1689055905182 :: {'s': 'error', 'code': -17, 'message': 'Could not authenticate the user'}
+
+1689055954300 :: get_profile :: FA2XHPXX2T-100:Hello :: 1689055954706 :: {'s': 'error', 'code': -17, 'message': 'Could not authenticate the user'}
+
+1689055973013 :: get_profile :: FA2XHPXX2T-100:Hello :: 1689055973348 :: {'s': 'error', 'code': -17, 'message': 'Could not authenticate the user'}
+
+1689055974501 :: get_profile :: FA2XHPXX2T-100:None :: 1689055974891 :: {'s': 'error', 'code': -17, 'message': 'Could not authenticate the user'}
