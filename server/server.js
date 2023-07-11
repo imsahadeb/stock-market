@@ -3,6 +3,7 @@ import router from './routes/router.js';
 import mongodbRouter from './routes/stocks.js';
 import { dhanApiRouter } from './routes/dhanRoutes.js';
 import { newsRouter } from './routes/newsRoutes.js';
+import tokenRouter from './routes/tokenroutes.js';
 import { generateFutureSymbol, getFuturePrice, getNSEOptionChain, getOptionChain } from './Utilis/utils.js';
 import cors from 'cors';
 
@@ -11,6 +12,7 @@ app.use(cors({ origin: '*' }));
 app.use('/news',newsRouter);
 app.use('/', router);
 app.use('/', mongodbRouter);
+app.use('/', tokenRouter);
 app.use('/dhan', dhanApiRouter);
 import { fileURLToPath } from 'url';
 import path from 'path';

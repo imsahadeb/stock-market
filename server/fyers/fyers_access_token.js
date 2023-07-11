@@ -1,1 +1,0 @@
-export const data = { "token": "access__token" };
