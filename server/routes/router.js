@@ -100,8 +100,8 @@ router.get('/charts', async (req, res) => {
   console.log('calling');
   try {
     const offset = req.query.day;
-    const symbol =  req.query.symbol;
-    const data = await getCharts(offset,symbol);
+    const symbol = req.query.symbol;
+    const data = await getCharts(offset, symbol);
     console.log(data);
     res.json(data);
   } catch (error) {
@@ -125,17 +125,33 @@ router.get('/option-chain/', async (req, res) => {
     const symbol = req.query.symbol;
     const expiry = req.query.expiry;
     const source = req.query.source;
-    let data='';
-   if(source=='nse'){
-     data = await getNSEOptionChain(symbol.toUpperCase(), expiry);
-   }
-   else{
-     data = await getOptionChain(symbol, expiry, 100);
-   }
-    
-    
+    let data = '';
+    if (source == 'nse') {
+      data = await getNSEOptionChain(symbol.toUpperCase(), expiry);
+    }
+    else {
+      data = await getOptionChain(symbol, expiry, 100);
+    }
 
- 
+
+
+
+    console.log("****************************************************");
+    console.log("call:", data);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+})
+
+
+router.get('/nse-option-chain/', async (req, res) => {
+  //symbol.toUpperCase();
+  try {
+    console.log('calling nse.... option chain');
+    const symbol = req.query.symbol;
+    const expiry = req.query.expiry;
+    const data = await getNSEOptionChain(symbol.toUpperCase(), expiry);
     console.log("****************************************************");
     console.log("call:", data);
     res.json(data);
