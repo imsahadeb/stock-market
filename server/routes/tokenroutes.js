@@ -1,6 +1,7 @@
 
 import express from 'express';
 import {fyersData} from '../config/fyers.js';
+import fyers from '../config/fyers.js';
 
 const tokenRouter = express.Router();
 tokenRouter.get('/generate', async (req, res) => {
