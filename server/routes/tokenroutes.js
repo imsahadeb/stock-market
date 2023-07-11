@@ -3,7 +3,7 @@ import express from 'express';
 import {fyersData} from '../config/fyers.js';
 
 const tokenRouter = express.Router();
-app.get('/generate', async (req, res) => {
+tokenRouter.get('/generate', async (req, res) => {
     const authCodeUrl = await fyers.generateAuthCode();
     res.redirect(authCodeUrl);
   });
