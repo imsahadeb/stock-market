@@ -83,6 +83,22 @@
     flex-direction: column;
 
 }
+
+
+
+.chain__body::-webkit-scrollbar {
+    width: 0px; /* Set the width of the scrollbar */
+    background-color: transparent; /* Set the background color of the scrollbar track */
+  }
+  
+  .chain__body::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); /* Set the color of the scrollbar thumb */
+    border-radius: 5px; /* Add rounded corners to the scrollbar thumb */
+  }
+  
+  .chain__body::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.4); /* Set the color of the scrollbar thumb on hover */
+  }
 .chain__body__menu{
     height: 35px;
     width: 100%;
@@ -141,7 +157,7 @@
 }
 
 .call__data{
-    flex: .461;
+    flex: .45;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

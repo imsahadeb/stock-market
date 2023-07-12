@@ -23,19 +23,14 @@ const ApexCharts = ({ data, height, width }) => {
 
     setUnderlyingPrices(prices);
 
-    // Calculate combined payoffj
+    // Calculate combined payoff
     const payoff = prices.map((price) => {
-      // const cePayoff = payOffPrice(price, orderType.CE_SOLD , 44700, 264);
-      // const pePayoff = payOffPrice(price, orderType.PE_SOLD, 44700, 216);
-      // const buyPayoff = payOffPrice(price, orderType.PE_BUY, 44500, 150);
-      // const combinedPayoffValue = (cePayoff + pePayoff + buyPayoff) * lot * lotSize;
-      // return combinedPayoffValue;
+     
       let combinedPayoffValue = 0;
-      data.map((orders) => {
-        combinedPayoffValue = combinedPayoffValue + payOffPrice(price, orders.orderType, orders.orderStrike, orders.orderPrice) * lot * lotSize;
-        return combinedPayoffValue;
-      })
-      return combinedPayoffValue;
+      data.forEach((order) => {
+        combinedPayoffValue += payOffPrice(price, order.orderType, order.orderStrike, order.orderPrice) * lot * lotSize;
+      });
+      return parseFloat(combinedPayoffValue.toFixed(2)); 
     });
 
     setCombinedPayoff(payoff);
