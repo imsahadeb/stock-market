@@ -1,0 +1,80 @@
+.builder__body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.builder__body__left {
+    display: flex;
+    flex: .3;
+    margin-right: 10px;
+    background-color: #1A1E23;
+    width: 100%;
+
+}
+
+.builder__body__right {
+    display: flex;
+    flex: .7;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1E23;
+}
+
+#chart {
+    width: 100%;
+}
+
+.options__chain {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.option__top__menu {
+    min-height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color:#1A1E23 ;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.option__top__menu span {
+    text-align: center;
+}
+
+.option__chain__body {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    flex-direction: column;
+
+}
+
+
+.option__chain__row{
+    margin-top: 2px;
+    height: 40px;
+    background-color: rgb(37, 37, 41);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  
+    align-items: center;
+}
+.chain__data{
+    background-color: rgb(46, 42, 42);
+    flex: .35;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}

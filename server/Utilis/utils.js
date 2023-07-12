@@ -213,6 +213,22 @@ export const getNSEOptionChain = async (symbol, date) => {
 
 }
 
+export const getCurrentExpiryNSEOptionChain = async (symbol) => {
+
+  const url = `https://www.nseindia.com/api/option-chain-indices?symbol=${symbol}`
+  console.log('url:', url);
+
+  const data = await axios.get(url);
+  const finalData = data.data.filtered.data;
+  console.log(finalData);
+
+  const filteredData = finalData;
+ 
+  return filteredData;
+
+
+}
+
 export const getExpiryDates = async (symbol) => {
 
   const url = `https://www.nseindia.com/api/option-chain-indices?symbol=${symbol}`

@@ -1,5 +1,5 @@
 import express from 'express';
-import { getDateByOffset, getCharts, generateFutureSymbol, getFuturePrice, getStrike, getOptionChain, getNSEOptionChain, getExpiryDates } from '../Utilis/utils.js';
+import { getDateByOffset, getCharts, generateFutureSymbol, getFuturePrice, getStrike, getOptionChain, getNSEOptionChain, getExpiryDates, getCurrentExpiryNSEOptionChain } from '../Utilis/utils.js';
 import fyers from '../config/fyers.js';
 const router = express.Router();
 
@@ -152,6 +152,22 @@ router.get('/nse-option-chain/', async (req, res) => {
     const symbol = req.query.symbol;
     const expiry = req.query.expiry;
     const data = await getNSEOptionChain(symbol.toUpperCase(), expiry);
+    console.log("****************************************************");
+    console.log("call:", data);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+})
+
+
+router.get('/current-option-chain/', async (req, res) => {
+  //symbol.toUpperCase();
+  try {
+    console.log('calling nse.... option chain');
+    const symbol = req.query.symbol;
+
+    const data = await getCurrentExpiryNSEOptionChain(symbol.toUpperCase());
     console.log("****************************************************");
     console.log("call:", data);
     res.json(data);

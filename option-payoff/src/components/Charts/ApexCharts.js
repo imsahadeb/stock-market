@@ -1,41 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import { payOffPrice } from '../../utils/utils.js';
+
+
 import './ApexCharts.css';
 
-const ApexCharts = () => {
+const ApexCharts = ({ data, height, width }) => {
   const [underlyingPrices, setUnderlyingPrices] = useState([]);
   const [combinedPayoff, setCombinedPayoff] = useState([]);
+ 
 
   useEffect(() => {
     const spotPrice = 44700;
-    const callSold = 44700;
-    const putSold = 44700;
-    const putBuy = 44500;
-    const buyPremium = 150;
-    const callPremium = 264;
-    const putPremium = 216;
     const lotSize = 25;
     const lot = 1;
     const prices = [];
 
     // Generate underlying price range
-    for (let i = spotPrice - 500; i <= spotPrice + 500; i += 100) {
+    for (let i = spotPrice - 1000; i <= spotPrice + 1000; i += 100) {
       prices.push(i);
     }
 
     setUnderlyingPrices(prices);
 
-    // Calculate combined payoff
+    // Calculate combined payoffj
     const payoff = prices.map((price) => {
-      const cePayoff = price <= callSold ? callPremium : callSold - price + callPremium;
-      const pePayoff = price >= putSold ? putPremium : price - putSold + putPremium;
-      const buyPayoff = price >= putBuy ? -buyPremium : putBuy - price - buyPremium;
-      const combinedPayoffValue = (cePayoff + pePayoff +buyPayoff) * lot * lotSize;
+      // const cePayoff = payOffPrice(price, orderType.CE_SOLD , 44700, 264);
+      // const pePayoff = payOffPrice(price, orderType.PE_SOLD, 44700, 216);
+      // const buyPayoff = payOffPrice(price, orderType.PE_BUY, 44500, 150);
+      // const combinedPayoffValue = (cePayoff + pePayoff + buyPayoff) * lot * lotSize;
+      // return combinedPayoffValue;
+      let combinedPayoffValue = 0;
+      data.map((orders) => {
+        combinedPayoffValue = combinedPayoffValue + payOffPrice(price, orders.orderType, orders.orderStrike, orders.orderPrice) * lot * lotSize;
+        return combinedPayoffValue;
+      })
       return combinedPayoffValue;
     });
 
     setCombinedPayoff(payoff);
-  }, []);
+  }, [data]);
 
   const series = [
     {
@@ -47,7 +51,6 @@ const ApexCharts = () => {
   const options = {
     chart: {
       type: 'area',
-      height: 600,
       toolbar: {
         show: false,
       },
@@ -130,12 +133,12 @@ const ApexCharts = () => {
     },
   };
 
+
+
   return (
-    <div id="chart">
-       {combinedPayoff.length > 0 && (
-        <ReactApexChart options={options} series={series} type="area" height={600} width={900} />
-      )}
-    </div>
+    <div id="chart"> {combinedPayoff.length > 0 && (
+      <ReactApexChart options={options} series={series} type="area" height={height} width={width} />
+    )}</div>
   );
 };
 

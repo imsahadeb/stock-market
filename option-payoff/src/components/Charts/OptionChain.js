@@ -2,26 +2,26 @@ import React, { useEffect, useState } from 'react';
 import './OptionChain.css';
 
 const OptionChain = () => {
-    const [optionChain, setOptionChain] = useState([]);
+  const [optionChain, setOptionChain] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('/api/option-chain');
-                const data = await response.json();
-                setOptionChain(data);
-            } catch (error) {
-                console.error('Error fetching option chain:', error);
-            }
-        };
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const response = await fetch('/api/option-chain');
+            const data = await response.json();
+            setOptionChain(data);
+        } catch (error) {
+            console.error('Error fetching option chain:', error);
+        }
+    };
 
-        fetchData();
-            // Fetch data every second
-            const interval = setInterval(fetchData, 1000);
+    fetchData();
+        // Fetch data every second
+        // const interval = setInterval(fetchData, 1000);
 
-            // Cleanup interval on component unmount
-            return () => clearInterval(interval);
-    }, []);
+        // // Cleanup interval on component unmount
+        // return () => clearInterval(interval);
+}, []);
 
     return (
         <div className="container">
@@ -32,7 +32,7 @@ const OptionChain = () => {
                     <div className="table__col">LTP</div>
                 </div>
                 <div className="chain__container">
-                    {Object.entries(optionChain).map(([strike, options]) => (
+                {Object.entries(optionChain).map(([strike, options]) => (
                         <div className='chain__row' key={strike}>
                             
                             <div className="chain__item">{options[0]?.lastPrice}</div>
