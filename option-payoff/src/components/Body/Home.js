@@ -23,7 +23,7 @@ const Home = () => {
             </div>
             <div className="stock__charts">
                 <div className="stock__chart">
-                    <CandleChart symbol={selectedSymbol} day={1} width={'100%'} height={'100%'} />
+                    <CandleChart symbol={selectedSymbol} day={0} width={'100%'} height={'100%'} />
                 </div>
                 <div className="info__box"></div>
             </div>
