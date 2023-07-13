@@ -2,7 +2,6 @@
   "name": "option-payoff",
   "version": "0.1.0",
   "private": true,
-
   "dependencies": {
     "-": "^0.0.1",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -24,6 +23,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.1",
     "react-scripts": "5.0.1",
+    "recharts": "^2.7.2",
     "save-dev": "^0.0.1-security",
     "web-vitals": "^2.1.4"
   },

@@ -1,45 +1,55 @@
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import { payOffPrice } from '../../utils/utils.js';
+import { payOffPrice } from '../../../utils/utils.js';
 
 
 import './ApexCharts.css';
 
-const ApexCharts = ({ data, height, width }) => {
-  const [underlyingPrices, setUnderlyingPrices] = useState([]);
+const ApexCharts = ({ data, height, index,width }) => {
+  const [underlyingStrike, setUnderlyingStrike] = useState([]);
   const [combinedPayoff, setCombinedPayoff] = useState([]);
+  
  
 
   useEffect(() => {
     const spotPrice = 44700;
     const lotSize = 25;
     const lot = 1;
-    const prices = [];
+    const strikes = [];
 
     // Generate underlying price range
     for (let i = spotPrice - 1000; i <= spotPrice + 1000; i += 100) {
-      prices.push(i);
+      strikes.push(i);
     }
 
-    setUnderlyingPrices(prices);
+    setUnderlyingStrike(strikes);
 
     // Calculate combined payoff
-    const payoff = prices.map((price) => {
+    const payoff = strikes.map((strike) => {
      
       let combinedPayoffValue = 0;
       data.forEach((order) => {
-        combinedPayoffValue += payOffPrice(price, order.orderType, order.orderStrike, order.orderPrice) * lot * lotSize;
+        combinedPayoffValue += payOffPrice(strike, order.orderType, order.orderStrike, order.orderPrice) * lot * lotSize;
       });
       return parseFloat(combinedPayoffValue.toFixed(2)); 
     });
 
+
     setCombinedPayoff(payoff);
   }, [data]);
 
+
+
+
+
+
+  console.log(combinedPayoff);
+
   const series = [
     {
-      name: 'Combined Payoff',
+      name: 'Profit',
       data: combinedPayoff,
+      color:  '#007ACC'
     },
   ];
 
@@ -53,6 +63,8 @@ const ApexCharts = ({ data, height, width }) => {
     markers: {
       size: 0,
     },
+ 
+  
     dataLabels: {
       enabled: false,
     },
@@ -67,7 +79,7 @@ const ApexCharts = ({ data, height, width }) => {
       },
     },
     xaxis: {
-      categories: underlyingPrices.map((value) => value.toFixed(0)),
+      categories: underlyingStrike.map((value) => value.toFixed(0)),
       axisBorder: {
         show: false,
       },
@@ -98,7 +110,7 @@ const ApexCharts = ({ data, height, width }) => {
       },
     },
     fill: {
-      colors: combinedPayoff.map((value) => (value >= 0 ? '#0000ff' : '#0000ff')),
+      colors: combinedPayoff.map((value) => (value >= 0 ? '#007ACC' : '#19577D')),
       type: 'gradient',
       gradient: {
         shadeIntensity: 1,
@@ -107,6 +119,7 @@ const ApexCharts = ({ data, height, width }) => {
         stops: [0, 100],
       },
     },
+ 
     tooltip: {
       x: {
         format: 'yyyy',

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from '../../../api/axios.js'
-import requests from '../../../api/requests.js';
+import axios from '../../api/axios.js'
+import requests from '../../api/requests.js';
 import './OptionChain.css'
 
 const OptionChain = () => {
@@ -9,7 +9,7 @@ const OptionChain = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(requests.getOptionChain('banknifty', '2023-07-13'));
+        const response = await axios.get(requests.getOptionChain('banknifty', '2023-07-20'));
        console.log(response.data);
         setOptionChain(response.data);
       } catch (error) {

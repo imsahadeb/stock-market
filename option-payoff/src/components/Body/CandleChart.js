@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import axios from '../../../api/axios.js';
-import requests from '../../../api/requests.js';
+import axios from '../../api/axios.js';
+import requests from '../../api/requests.js';
 
 const CandleChart = ({symbol, day,height, width}) => {
   const [chartsData, setChartsData] = useState([]);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import axios from '../../../api/axios.js'
-import request from '../../../api/requests.js'
+import axios from '../../api/axios.js'
+import request from '../../api/requests.js'
 
 import './News.css'
 

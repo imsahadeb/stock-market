@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
 import './StockBox.css';
-import axios from '../../../api/axios.js'
-import requests from '../../../api/requests.js';
+import axios from '../../api/axios'
+import requests from '../../api/requests';
 const StockBox = ({ stockName, onClick }) => {
   const [stockDetails, setStockDetails] = useState(null);
 

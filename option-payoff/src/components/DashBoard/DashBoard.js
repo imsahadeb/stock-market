@@ -1,7 +1,7 @@
 import React from 'react'
 import './DashBoard.css'
-import { Body } from './Body'
-import Navbar from './Navbar'
+import { Body } from '../Body/Body'
+import Navbar from '../NavBar/Navbar'
 const DashBoard = () => {
   return (
     <div className="main">

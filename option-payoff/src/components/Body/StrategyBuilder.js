@@ -1,21 +1,32 @@
-
-
 import React, { useEffect, useState } from 'react';
-import ApexCharts from '../../Charts/ApexCharts';
 import './StrategyBuilder.css';
-import axios from '../../../api/axios.js';
-import requests from '../../../api/requests.js';
-import { orderType } from '../../../constant/constantOrderType.js';
+import axios from '../../api/axios.js';
+import requests from '../../api/requests.js';
+import {orderType} from '../../constant/constantOrderType'
+import OptionPayoffGraph from '../Utility/OptionPayoffGraph';
+
 
 const StrategyBuilder = () => {
   const [optionChain, setOptionChain] = useState([]);
-  const [data, setData] = useState([]);
+
+  const [orders, setOrders] = useState([
+    {
+      "orderType": orderType.CE_SOLD,
+      "orderStrike": 44700,
+      "orderPrice": 264
+    },
+    {
+      "orderType": orderType.PE_SOLD,
+      "orderStrike": 44700,
+      "orderPrice": 216
+    }
+  ]);
   // const [dataChanged, setDataChanged] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(requests.getOptionChain('banknifty', '2023-07-13'));
+        const response = await axios.get(requests.getOptionChain('banknifty', '2023-07-20'));
         console.log(response.data);
         setOptionChain(response.data);
       } catch (error) {
@@ -27,24 +38,24 @@ const StrategyBuilder = () => {
   }, []);
 
   const handleReset = ()=>{
-  const  newData = [{
+  const  newOrder = [{
 
     }];
-    setData(newData);
+    setOrders(newOrder);
 
   }
    const handleClick = (orderType, orderStrike, orderPrice) => {
-    const newData = [
-      ...data,
+    const newOrder = [
+      ...orders,
       {
         "orderType": orderType,
         "orderStrike": orderStrike,
         "orderPrice": orderPrice
       }
     ];
-    setData(newData);
+    setOrders(newOrder);
     // setDataChanged(true);
-    console.log(newData);
+    console.log(newOrder);
   };
   
 
@@ -98,7 +109,10 @@ const StrategyBuilder = () => {
             <button className="reset__btn" onClick={()=>handleReset()}>Reset</button>
           </div>
           <div className="body__builder">
-            {<ApexCharts data={data} width={'100%'} height={'400px'} />}
+            {/* {<ApexCharts data={data} index={index} width={'100%'} height={'400px'} />} */}
+            {/* <OptionPayoffGraph orders={orders} width={'100%'} height={'4000px'} /> */}
+           <OptionPayoffGraph orders={orders}  />
+
           </div>
 
         </div>

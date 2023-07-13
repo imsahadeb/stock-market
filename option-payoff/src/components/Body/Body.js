@@ -1,16 +1,16 @@
 import React from 'react'
 import './Body.css'
-import Sidebar from './Sidebar'
+import Sidebar from '../SideBar/Sidebar'
 import { Route, Routes } from "react-router-dom";
-import Positions from './Body/Positions'
-import Home from './Body/Home'
-import News from './Body/News'
-import Blog from './Body/Blog'
-import Portfolio from './Body/Portfolio'
-import StrategyBuilder from './Body/StrategyBuilder'
-import OptionChain from './Body/OptionChain'
+import Positions from './Positions'
+import Home from './Home'
+import News from './News'
+import Blog from './Blog'
+import Portfolio from './Portfolio'
+import StrategyBuilder from './StrategyBuilder'
+import OptionChain from './OptionChain'
 
-import Oi from './Body/Oi';
+import Oi from './Oi';
 
 export const Body = () => {
 

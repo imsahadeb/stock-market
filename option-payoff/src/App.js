@@ -1,5 +1,5 @@
 import React from 'react'
-import DashBoard from './components/Main/DashBoard'
+import DashBoard from './components/DashBoard/DashBoard'
 import { BrowserRouter } from "react-router-dom";
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <DashBoard />
+      
 
 
     </BrowserRouter>
