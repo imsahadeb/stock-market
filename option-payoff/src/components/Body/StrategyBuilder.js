@@ -6,6 +6,7 @@ import {orderType} from '../../constant/constantOrderType'
 import OptionPayoffGraph from '../Utility/OptionPayoffGraph';
 
 
+
 const StrategyBuilder = () => {
   const [optionChain, setOptionChain] = useState([]);
 
@@ -111,7 +112,8 @@ const StrategyBuilder = () => {
           <div className="body__builder">
             {/* {<ApexCharts data={data} index={index} width={'100%'} height={'400px'} />} */}
             {/* <OptionPayoffGraph orders={orders} width={'100%'} height={'4000px'} /> */}
-           <OptionPayoffGraph orders={orders}  />
+           {/* <OptionPayoffGraph orders={orders}  /> */}
+           <OptionPayoffGraph orders={orders}/>
 
           </div>
 

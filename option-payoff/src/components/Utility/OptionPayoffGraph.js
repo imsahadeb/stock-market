@@ -1,32 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import {payOffPrice} from '../../utils/utils'
-
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-
-  Filler,
-  Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
+import { React, useState, useEffect } from 'react'
+import { AreaChart, Area, XAxis, YAxis, Tooltip } from 'recharts';
 
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Filler,
-  Legend
-);
+import { payOffPrice } from '../../utils/utils.js';
 
-const OptionPayoffGraph = ({ orders }) => {
-  const [underlyingPrices, setUnderlyingPrices] = useState([]);
+
+const OptionPayoffGraph = ({orders}) => {
+ 
   const [combinedPayoff, setCombinedPayoff] = useState([]);
 
 
@@ -34,72 +14,68 @@ const OptionPayoffGraph = ({ orders }) => {
     const spotPrice = 44700;
     const lotSize = 25;
     const lot = 1;
-    const prices = [];
-
-    // Generate underlying price range
+    const strikes = [];
     for (let i = spotPrice - 1000; i <= spotPrice + 1000; i += 100) {
-      prices.push(i);
+      strikes.push(i);
     }
 
-    setUnderlyingPrices(prices);
+  
 
-    // Calculate combined payoff
-    const payoff = prices.map((price) => {
-
+    const payoff = strikes.map((strike) => {
       let combinedPayoffValue = 0;
       orders.forEach((order) => {
-        combinedPayoffValue += payOffPrice(price, order.orderType, order.orderStrike, order.orderPrice) * lot * lotSize;
+        combinedPayoffValue += payOffPrice(strike, order.orderType, order.orderStrike, order.orderPrice) * lot * lotSize;
       });
-      return parseFloat(combinedPayoffValue.toFixed(2));
+      return {
+        strike: strike,
+        profit: parseFloat(combinedPayoffValue.toFixed(2))
+      };
     });
 
     setCombinedPayoff(payoff);
   }, [orders]);
 
-  console.log("combined payoff", combinedPayoff);
+  const gradientOffset = () => {
+    const dataMax = Math.max(...combinedPayoff.map((i) => i.profit));
+    const dataMin = Math.min(...combinedPayoff.map((i) => i.profit));
 
-  const labels = underlyingPrices;
-  console.log('labels', underlyingPrices);
+    if (dataMax <= 0) {
+      return 0;
+    }
+    if (dataMin >= 0) {
+      return 1;
+    }
 
-  console.log(combinedPayoff);
-  const data = {
-    labels,
-    datasets: [
-      {
-        fill: {
-          target: 'origin',
-          above: '#007ACC',   // Area will be red above the origin
-          below: 'blue'    // And blue below the origin
-        },
-        data: combinedPayoff,
-        borderColor: '#007ACC'
-
-
-      },
-    ],
-  };
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top'
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Line Chart',
-      },
-
-    },
-    maintainAspectRatio: false, // Added to allow setting custom height and width
-
+    return dataMax / (dataMax - dataMin);
   };
 
+  const off = gradientOffset();
 
 
   return (
-
-    <Line options={options} data={data} />
-
+    <AreaChart
+      width={900}
+      height={400}
+      data={combinedPayoff}
+      margin={{
+        top: 10,
+        right: 30,
+        left: 0,
+        bottom: 0,
+      }}
+    >
+      {/* <CartesianGrid strokeDasharray="3 3" /> */}
+      <XAxis dataKey="strike" />
+      <YAxis />
+      <Tooltip />
+      <defs>
+        <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
+          <stop offset={off} stopColor="red" stopOpacity={.7} />
+          <stop offset={off} stopColor="green" stopOpacity={.7} />
+        </linearGradient>
+      </defs>
+      <Area type="stright" dataKey="profit" stroke="#000" fill="url(#splitColor)" />
+    </AreaChart>
   )
 }
 
