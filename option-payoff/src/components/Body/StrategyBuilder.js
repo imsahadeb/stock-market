@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './StrategyBuilder.css';
 import axios from '../../api/axios.js';
 import requests from '../../api/requests.js';
-import {orderType} from '../../constant/constantOrderType'
+import { orderType } from '../../constant/constantOrderType'
 import OptionPayoffGraph from '../Utility/OptionPayoffGraph';
 
 
@@ -38,14 +38,14 @@ const StrategyBuilder = () => {
     fetchData();
   }, []);
 
-  const handleReset = ()=>{
-  const  newOrder = [{
+  const handleReset = () => {
+    const newOrder = [{
 
     }];
     setOrders(newOrder);
 
   }
-   const handleClick = (orderType, orderStrike, orderPrice) => {
+  const handleClick = (orderType, orderStrike, orderPrice) => {
     const newOrder = [
       ...orders,
       {
@@ -58,7 +58,7 @@ const StrategyBuilder = () => {
     // setDataChanged(true);
     console.log(newOrder);
   };
-  
+
 
   return (
     <div className="universal__body">
@@ -107,15 +107,45 @@ const StrategyBuilder = () => {
         </div>
         <div className="builder__body__right">
           <div className="top__builder">
-            <button className="reset__btn" onClick={()=>handleReset()}>Reset</button>
+
+            <button className="reset__btn" onClick={() => handleReset()}>Reset</button>
+            <div className="order__book">
+              <div className="orders__row">
+                <div className="ordders__row__items">
+                  Strike
+                </div>
+                <div className="ordders__row__items">
+                  Order Type
+                </div>
+                <div className="ordders__row__items">
+                  Price
+                </div>
+
+              </div>
+              {
+                orders.map((order) => (
+                  <div className="orders__row">
+                    <div className="ordders__row__items">
+                      {order.orderStrike}
+                    </div>
+                    <div className="ordders__row__items">
+                      {order.orderType}
+                    </div>
+                    <div className="ordders__row__items">
+                     {order.orderPrice}
+                    </div>
+
+                  </div>
+                ))
+              }
+
+            </div>
           </div>
-          <div className="body__builder">
-            {/* {<ApexCharts data={data} index={index} width={'100%'} height={'400px'} />} */}
-            {/* <OptionPayoffGraph orders={orders} width={'100%'} height={'4000px'} /> */}
-           {/* <OptionPayoffGraph orders={orders}  /> */}
-           <OptionPayoffGraph orders={orders}/>
+          <div className="options__strategy__builder">
+            <OptionPayoffGraph orders={orders} />
 
           </div>
+
 
         </div>
       </div>
