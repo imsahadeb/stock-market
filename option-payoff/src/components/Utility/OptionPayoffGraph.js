@@ -70,8 +70,9 @@ const OptionPayoffGraph = ({orders}) => {
       <Tooltip />
       <defs>
         <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
-          <stop offset={off} stopColor="red" stopOpacity={.7} />
-          <stop offset={off} stopColor="green" stopOpacity={.7} />
+        <stop offset={off} stopColor="#76FF80" stopOpacity={.95} />
+          <stop offset={off} stopColor="#EF5350" stopOpacity={1} />
+        
         </linearGradient>
       </defs>
       <Area type="stright" dataKey="profit" stroke="#000" fill="url(#splitColor)" />

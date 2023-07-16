@@ -181,8 +181,8 @@ align-content: center;
 }
 .body__builder{
     flex: .8;
-  
     max-height: 500px;
     margin-bottom: 150px;
     color: #000;
+ 
 }

@@ -3,7 +3,7 @@ import { connectToDatabase } from '../config/db-connection.js';
 import { StockModel } from '../models/stocksSchema.js';
 
 
-const mongodbRouter = express.Router();
+export const mongodbRouter = express.Router();
 connectToDatabase();
 
 
@@ -25,4 +25,4 @@ mongodbRouter.get('/stocks', async (req, res) => {
         res.status(500).json({ error: 'Error searching stocks' });
     }
 });
-export default mongodbRouter;
+// export default mongodbRouter;
