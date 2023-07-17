@@ -8,13 +8,12 @@ import path from 'path';
 export const tokenRouter = express.Router();
 const __filename = path.resolve(import.meta.url.slice(7));
 const __dirname = path.dirname(__filename);
-const apiUrl = "https://apiv2.fyers.in";
+
 tokenRouter.get('/generate', async (req, res) => {
-  const authCodeUrl = `${apiUrl}/api/v2/generate-authcode?client_id=${fyersData.appId}&redirect_uri=${fyersData.redirectUrl}&response_type=code&state=sample_state/`;
+  const authCodeUrl = `https://api.fyers.in/api/v2/generate-authcode?client_id=${fyersData.appId}&redirect_uri=${fyersData.redirectUrl}&response_type=code&state=sample_state/`;
   console.log(authCodeUrl);
   res.redirect(authCodeUrl);
 });
-
 
 tokenRouter.get('/token', (req, res) => {
   const auth_code = req.query.auth_code;
