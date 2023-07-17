@@ -1,6 +1,6 @@
 export const fyersData = {
   "appId": "UGY069G3IZ-100",
   "secretId": "7DNKQGSG6K",
-  "redirectUrl": "https://api.ghontu.in/token",
+  "redirectUrl": "https://apiv2.ghontu.in/token",
   "fyers_acess_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuZnllcnMuaW4iLCJpYXQiOjE2ODk1MTUzODYsImV4cCI6MTY4OTU1Mzg0NiwibmJmIjoxNjg5NTE1Mzg2LCJhdWQiOlsieDowIiwieDoxIiwieDoyIiwiZDoxIiwiZDoyIiwieDoxIiwieDowIl0sInN1YiI6ImFjY2Vzc190b2tlbiIsImF0X2hhc2giOiJnQUFBQUFCa3NfVjZxbnZaenZGLTVaN1FxVUxrTzdiQ1Z4ZnRBUEp5a1o2Sl9PQTh3cGhMNVFxQmQ4WGE1dXN2cnZIV3hxdGI0d1VpTkxSZklubTV5WW5id2ZfcjJjdXlxOHJEUzllQTl5MWpjRFIyNlF2V2NZZz0iLCJkaXNwbGF5X25hbWUiOiJTQUhBREVCIEJBUk1BTiIsIm9tcyI6IksxIiwiZnlfaWQiOiJEUzAyMjgzIiwiYXBwVHlwZSI6MTAwLCJwb2FfZmxhZyI6Ik4ifQ.ef_5jeOpDZhOXvZh9L0oboDMixUEiKdD20ZvxlUCjl0"
 };
