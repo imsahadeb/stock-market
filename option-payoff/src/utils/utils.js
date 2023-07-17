@@ -31,3 +31,29 @@ export const payOffPrice = (currentStrike, orderType, orderStrike,orderPrice) =>
 
 
 }
+
+/**
+ * 
+ * @param {45000} input 
+ * @returns 
+ */
+
+export const  roundToNearest=(input) =>{
+    if (Number.isInteger(input)) {
+      // Input is an integer
+      const roundedValue = Math.round(input / 100) * 100;
+      return roundedValue;
+    } else {
+      // Input is a floating-point number
+      const integerPart = Math.floor(input / 100) * 100;
+      const decimalPart = input % 100;
+      let roundedValue;
+      if (decimalPart >= 50) {
+        roundedValue = integerPart + 100;
+      } else {
+        roundedValue = integerPart;
+      }
+      return roundedValue;
+    }
+  }
+  

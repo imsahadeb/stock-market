@@ -1,25 +1,43 @@
 import { React, useState, useEffect } from 'react'
 import { AreaChart, Area, XAxis, YAxis, Tooltip } from 'recharts';
-
-
+import axios from '../../api/axios';
+import request from '../../api/requests'
+import { roundToNearest } from '../../utils/utils.js';
 import { payOffPrice } from '../../utils/utils.js';
 
 
-const OptionPayoffGraph = ({orders}) => {
- 
+const OptionPayoffGraph = ({ orders }) => {
+
   const [combinedPayoff, setCombinedPayoff] = useState([]);
+  const [indexPrice, setIndexPrice] = useState();
+
 
 
   useEffect(() => {
-    const spotPrice = 44700;
+    const fetchData = async () => {
+      const data = await axios.get(request.getFutureQuotes('banknifty'));
+ 
+     
+      if (data.data && data.data.code === 200 ) {
+        const price = data.data.d[0].v.lp;
+        console.log("price",price);
+        setIndexPrice(price)
+        
+      }
+     
+      
+    }
+    fetchData();
+  //  console.log(indexPrice);
+    const spotPrice = roundToNearest(indexPrice);
     const lotSize = 25;
     const lot = 1;
     const strikes = [];
-    for (let i = spotPrice - 1000; i <= spotPrice + 1000; i += 100) {
+    for (let i = spotPrice - 1500; i <= spotPrice + 1500; i += 100) {
       strikes.push(i);
     }
 
-  
+
 
     const payoff = strikes.map((strike) => {
       let combinedPayoffValue = 0;
@@ -33,7 +51,7 @@ const OptionPayoffGraph = ({orders}) => {
     });
 
     setCombinedPayoff(payoff);
-  }, [orders]);
+  }, [orders, indexPrice]);
 
   const gradientOffset = () => {
     const dataMax = Math.max(...combinedPayoff.map((i) => i.profit));
@@ -70,9 +88,9 @@ const OptionPayoffGraph = ({orders}) => {
       <Tooltip />
       <defs>
         <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
-        <stop offset={off} stopColor="#76FF80" stopOpacity={.95} />
+          <stop offset={off} stopColor="#76FF80" stopOpacity={.95} />
           <stop offset={off} stopColor="#EF5350" stopOpacity={1} />
-        
+
         </linearGradient>
       </defs>
       <Area type="stright" dataKey="profit" stroke="#000" fill="url(#splitColor)" />

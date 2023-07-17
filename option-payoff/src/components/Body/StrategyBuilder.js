@@ -10,18 +10,7 @@ import OptionPayoffGraph from '../Utility/OptionPayoffGraph';
 const StrategyBuilder = () => {
   const [optionChain, setOptionChain] = useState([]);
 
-  const [orders, setOrders] = useState([
-    {
-      "orderType": orderType.CE_SOLD,
-      "orderStrike": 44700,
-      "orderPrice": 264
-    },
-    {
-      "orderType": orderType.PE_SOLD,
-      "orderStrike": 44700,
-      "orderPrice": 216
-    }
-  ]);
+  const [orders, setOrders] = useState([]);
   // const [dataChanged, setDataChanged] = useState(true);
 
   useEffect(() => {
