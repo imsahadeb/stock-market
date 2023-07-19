@@ -16,19 +16,19 @@ const OptionPayoffGraph = ({ orders }) => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await axios.get(request.getFutureQuotes('banknifty'));
- 
-     
-      if (data.data && data.data.code === 200 ) {
+
+
+      if (data.data && data.data.code === 200) {
         const price = data.data.d[0].v.lp;
-        console.log("price",price);
+        console.log("price", price);
         setIndexPrice(price)
-        
+
       }
-     
-      
+
+
     }
     fetchData();
-  //  console.log(indexPrice);
+    //  console.log(indexPrice);
     const spotPrice = roundToNearest(indexPrice);
     const lotSize = 25;
     const lot = 1;
