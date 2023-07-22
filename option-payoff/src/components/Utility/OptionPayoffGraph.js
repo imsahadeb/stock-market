@@ -11,7 +11,16 @@ const OptionPayoffGraph = ({ orders }) => {
   const [combinedPayoff, setCombinedPayoff] = useState([]);
   const [indexPrice, setIndexPrice] = useState();
 
-
+  const getMaxAbsoluteProfit = (data) => {
+    const positiveMax = Math.max(...data.map((item) => item.profit));
+    const negativeMax = Math.min(...data.map((item) => item.profit));
+    return Math.max(Math.abs(positiveMax), Math.abs(negativeMax));
+  };
+  
+  // Inside the OptionPayoffGraph component:
+  const maxAbsoluteProfit = getMaxAbsoluteProfit(combinedPayoff);
+  
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -76,15 +85,15 @@ const OptionPayoffGraph = ({ orders }) => {
       height={400}
       data={combinedPayoff}
       margin={{
-        top: 10,
+        top: 30,
         right: 30,
-        left: 0,
+        left: 50,
         bottom: 0,
       }}
     >
       {/* <CartesianGrid strokeDasharray="3 3" /> */}
       <XAxis dataKey="strike" />
-      <YAxis />
+      <YAxis domain={[-maxAbsoluteProfit, maxAbsoluteProfit]} />
       <Tooltip />
       <defs>
         <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
