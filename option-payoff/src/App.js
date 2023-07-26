@@ -9,8 +9,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <DashBoard /> */}
-      <MuiTest/>
+      <DashBoard />
+      {/* <MuiTest/> */}
  
 
     </BrowserRouter>

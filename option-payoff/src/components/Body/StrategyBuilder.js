@@ -16,7 +16,7 @@ const StrategyBuilder = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(requests.getOptionChain('banknifty', '20-Jul-2023'));
+        const response = await axios.get(requests.getOptionChain('banknifty', '03-Aug-2023'));
         console.log(response.data);
         setOptionChain(response.data);
       } catch (error) {

@@ -9,7 +9,7 @@ const OptionChain = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(requests.getOptionChain('banknifty', '2023-07-27'));
+        const response = await axios.get(requests.getOptionChain('banknifty', '2023-08-03'));
        console.log(response.data);
         setOptionChain(response.data);
       } catch (error) {
